@@ -1,0 +1,58 @@
+{
+  "title": "Docker Basics — Containers from Zero to Hero",
+  "description": "Learn Docker hands-on: run containers, build images from Dockerfiles (Node.js and Python Flask), understand layer caching, and connect containers on a network.",
+  "difficulty": "Beginner",
+  "time": "45",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Step 1 — Your First Container",
+        "text": "step1/text.md"
+      },
+      {
+        "title": "Step 2 — Run a Web Server (Port Mapping)",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Step 3 — Inspect and Debug a Running Container",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Step 4 — Get a Shell Inside a Container",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Step 5 — Build a Node.js Image with a Dockerfile",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Step 6 — Build a Python Flask Image with a Dockerfile",
+        "text": "step6/text.md",
+        "verify": "step6/verify.sh"
+      },
+      {
+        "title": "Step 7 — Layer Caching: Fast Rebuilds",
+        "text": "step7/text.md",
+        "verify": "step7/verify.sh"
+      },
+      {
+        "title": "Step 8 — Two Containers, One Network",
+        "text": "step8/text.md",
+        "verify": "step8/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
