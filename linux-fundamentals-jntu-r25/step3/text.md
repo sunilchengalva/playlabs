@@ -4,27 +4,45 @@
 
 ```bash
 cat ~/lab/data/students.csv
+```
 
-# With line numbers
+With line numbers:
+
+```bash
 cat -n ~/lab/data/server.log
 ```
 
-## `head` and `tail` — first and last lines
+## `head` — first lines
+
+First 10 lines (default):
 
 ```bash
-# First 10 lines (default)
 head ~/lab/data/server.log
+```
 
-# First 5 lines
+First 5 lines:
+
+```bash
 head -n 5 ~/lab/data/server.log
+```
 
-# Last 10 lines (default)
+## `tail` — last lines
+
+Last 10 lines (default):
+
+```bash
 tail ~/lab/data/server.log
+```
 
-# Last 3 lines
+Last 3 lines:
+
+```bash
 tail -n 3 ~/lab/data/server.log
+```
 
-# Follow a live file (Ctrl+C to stop)
+Follow a live file — new lines appear as they are written (Ctrl+C to stop):
+
+```bash
 tail -f ~/lab/data/server.log
 ```
 
@@ -35,50 +53,64 @@ less ~/lab/data/server.log
 ```
 
 Inside `less`:
-- Arrow keys or `j`/`k` to scroll
+- Arrow keys or `j`/`k` to scroll line by line
 - `Space` for next page, `b` for previous
 - `/ERROR` to search forward, `n` for next match
 - `q` to quit
 
 ## `wc` — count lines, words, bytes
 
+Lines, words, and bytes all at once:
+
 ```bash
-# Lines, words, bytes all at once
 wc ~/lab/data/server.log
+```
 
-# Lines only
+Lines only:
+
+```bash
 wc -l ~/lab/data/students.csv
+```
 
-# Words only
+Words only:
+
+```bash
 wc -w ~/lab/data/students.csv
+```
 
-# Bytes only
+Bytes only:
+
+```bash
 wc -c ~/lab/data/server.log
 ```
 
 ## Concatenate multiple files
 
-`cat` can take multiple filenames and prints them one after the other:
+`cat` accepts multiple filenames and prints them one after the other:
 
 ```bash
 cat ~/lab/data/students.csv ~/lab/projects/api/config.txt
 ```
 
-## `more` — simple pager (older alternative to `less`)
+## `more` — simple pager
 
 ```bash
 more ~/lab/data/server.log
-# Space to advance, q to quit
 ```
+
+Space to advance one page, `q` to quit. `less` is preferred for most work since it supports backward scrolling.
 
 ---
 
 ## Task ✅
 
-Combine both data files into one and save it, then confirm its line count:
+Combine both data files into one, then check its line count:
 
 ```bash
 cat ~/lab/data/server.log ~/lab/data/students.csv > ~/lab/jntu/sem1/combined.txt
+```
+
+```bash
 wc -l ~/lab/jntu/sem1/combined.txt
 ```
 

@@ -17,50 +17,142 @@ Linux organises everything in a single directory tree rooted at `/`. Every file,
 | `/proc` | Virtual filesystem — live kernel and process info |
 | `/dev` | Device files (disks, terminals, etc.) |
 
-## Navigation commands
+---
+
+## Build your own hierarchy first
+
+Before exploring system directories, create a small tree of your own. This is what you will navigate in all the exercises below.
 
 ```bash
-# Where are you right now?
-pwd
-
-# List current directory
-ls
-ls -l          # long format: permissions, owner, size, date
-ls -a          # include hidden files (names starting with .)
-ls -lh         # long format with human-readable sizes (KB, MB)
-ls -lA /etc    # list /etc, skip . and ..
+mkdir -p ~/myproject/src
 ```
 
-## Move around the tree
-
 ```bash
-cd /etc        # go to /etc
-pwd
-ls
-
-cd /var/log    # go to /var/log
-ls
-
-cd ~           # return to home directory (/root)
-pwd
-
-cd -           # toggle back to previous directory
+mkdir -p ~/myproject/docs
 ```
 
-## Explore the hierarchy
+```bash
+mkdir -p ~/myproject/config
+```
 
 ```bash
-# Which Linux distribution is this?
+touch ~/myproject/src/app.py
+```
+
+```bash
+touch ~/myproject/src/utils.py
+```
+
+```bash
+touch ~/myproject/docs/notes.txt
+```
+
+```bash
+touch ~/myproject/config/settings.conf
+```
+
+Verify the whole tree at once:
+
+```bash
+ls -lR ~/myproject
+```
+
+---
+
+## Navigate your tree
+
+```bash
+pwd
+```
+
+```bash
+cd ~/myproject
+```
+
+```bash
+pwd
+```
+
+```bash
+ls
+```
+
+```bash
+ls -l
+```
+
+```bash
+ls -a
+```
+
+```bash
+ls -lh
+```
+
+```bash
+cd src
+```
+
+```bash
+pwd
+```
+
+```bash
+ls
+```
+
+```bash
+cd ~/myproject/docs
+```
+
+```bash
+pwd
+```
+
+```bash
+cd ~
+```
+
+```bash
+pwd
+```
+
+```bash
+cd -
+```
+
+```bash
+pwd
+```
+
+---
+
+## Explore system directories
+
+Now that you are comfortable with navigation, take a look at the system hierarchy. Each command below is independent — run them one at a time and read the output.
+
+```bash
+ls /bin
+```
+
+```bash
+ls /etc
+```
+
+```bash
+ls /var/log
+```
+
+```bash
+ls /tmp
+```
+
+```bash
 cat /etc/os-release
-
-# What is in /bin?
-ls /bin | head -20
-
-# How much disk space is used?
-df -h
-
-# What is in your lab directory?
-ls -lR ~/lab
 ```
 
-This step is exploratory. Spend a few minutes navigating around, then click **Continue**.
+```bash
+df -h
+```
+
+This step is exploratory — no verifier. Click **Continue** when ready.

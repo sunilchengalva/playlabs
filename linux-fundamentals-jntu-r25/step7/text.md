@@ -4,80 +4,135 @@
 
 Every running program is a **process** with a unique **PID** (Process ID). Linux is multi-process — many programs run simultaneously.
 
+---
+
 ## Viewing processes
 
+Your current shell's processes:
+
 ```bash
-# Your current shell's processes
 ps
+```
 
-# All processes on the system (snapshot)
+All processes on the system (snapshot):
+
+```bash
 ps aux
+```
 
-# Tree view showing parent-child relationships
+Tree view showing parent-child relationships:
+
+```bash
 ps auxf
+```
 
-# Interactive real-time viewer — press q to quit
+Interactive real-time viewer — press `q` to quit:
+
+```bash
 top
 ```
 
 Key `top` columns: **PID**, **USER**, **%CPU**, **%MEM**, **COMMAND**
 
+---
+
 ## Background jobs
 
+Run a command in the background with `&`:
+
 ```bash
-# Run a command in the background with &
 sleep 300 &
+```
+
+```bash
 sleep 400 &
+```
 
-# List background jobs in this shell
+List background jobs in this shell:
+
+```bash
 jobs
+```
 
-# Bring job 1 to the foreground
+Bring job 1 to the foreground:
+
+```bash
 fg %1
+```
 
-# Suspend the foreground job (Ctrl+Z), then push it to background
+Suspend the foreground job with **Ctrl+Z**, then push it to background:
+
+```bash
 bg %1
+```
 
-# Check the PID of the most recently backgrounded job
+Print the PID of the most recently backgrounded job:
+
+```bash
 echo $!
 ```
 
+---
+
 ## `kill` — send signals to processes
 
+Start a background process to practice on:
+
 ```bash
-# Start a background process
 sleep 1000 &
+```
 
-# List jobs with PIDs
+List jobs with their PIDs:
+
+```bash
 jobs -l
+```
 
-# Send SIGTERM (graceful shutdown — default)
+Send SIGTERM (graceful shutdown — default). Replace `<PID>` with the actual number from `jobs -l`:
+
+```bash
 kill <PID>
+```
 
-# Force kill SIGKILL (cannot be ignored)
+Force-kill with SIGKILL (cannot be ignored):
+
+```bash
 kill -9 <PID>
+```
 
-# Kill all processes named sleep
+Kill all processes with a given name:
+
+```bash
 killall sleep
 ```
+
+---
 
 ## `nohup` — keep running after logout
 
 ```bash
-# Start a process that survives terminal close
 nohup sleep 500 &
-# Output is logged to nohup.out
 ```
+
+Output is logged to `nohup.out` automatically.
+
+---
 
 ## `nice` — start with a priority hint
 
-```bash
-# Lower priority (nice 10 = less urgent)
-nice -n 10 sleep 200 &
+Start a process with lower priority (nice value 10):
 
-# Check the NI column in top
+```bash
+nice -n 10 sleep 200 &
+```
+
+Check the NI column to confirm:
+
+```bash
 ps aux | grep sleep
 ```
+
+---
 
 ## Cron — scheduled tasks
 
@@ -92,8 +147,6 @@ Cron runs commands automatically on a time schedule.
 └────────── minute       (0–59)
 ```
 
-Common examples:
-
 | Expression | Meaning |
 |------------|---------|
 | `* * * * *` | Every minute |
@@ -102,17 +155,21 @@ Common examples:
 | `30 23 * * *` | Every day at 23:30 |
 | `0 0 1 * *` | First day of every month at midnight |
 
+Open the crontab editor (opens in nano or vi):
+
 ```bash
-# Edit the crontab (opens in nano or vi)
 crontab -e
+```
 
-# Add this line to log the hostname every minute:
-# * * * * * hostname >> /tmp/hostname.log
+List current crontab entries:
 
-# List your current crontab entries
+```bash
 crontab -l
+```
 
-# Remove all crontab entries
+Remove all crontab entries:
+
+```bash
 crontab -r
 ```
 
@@ -120,20 +177,36 @@ crontab -r
 
 ## Task ✅
 
+Start two background processes:
+
 ```bash
-# 1. Start two background sleep processes
 sleep 500 &
+```
+
+```bash
 sleep 600 &
+```
 
-# 2. Record the PID of the last one
+Record the PID of the last background job (`$!` always holds it):
+
+```bash
 echo $! > ~/lab/jntu/bg_pid.txt
+```
 
-# 3. Kill all sleep processes
+Kill all sleep processes:
+
+```bash
 killall sleep
+```
 
-# 4. Add a cron job: append hostname to /tmp/hostname.log every minute
+Add a cron job that appends the hostname every minute (this is a pipeline and must stay as one command):
+
+```bash
 (crontab -l 2>/dev/null; echo "* * * * * hostname >> /tmp/hostname.log") | crontab -
+```
 
-# Verify the crontab was set
+Confirm the crontab was set:
+
+```bash
 crontab -l
 ```

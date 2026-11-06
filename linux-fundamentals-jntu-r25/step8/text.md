@@ -2,89 +2,175 @@
 
 Linux is a multi-user system. Every file, process, and permission is tied to a user and a group.
 
+---
+
 ## Who am I right now?
 
 ```bash
-whoami          # username of the current user
-id              # UID, primary GID, and all supplementary groups
-who             # users currently logged in
-w               # logged-in users with what they are running
-last            # login history from /var/log/wtmp
+whoami
 ```
+
+```bash
+id
+```
+
+```bash
+who
+```
+
+```bash
+w
+```
+
+```bash
+last
+```
+
+---
 
 ## The user database
 
-```bash
-# Each line: username:x:UID:GID:comment:home:shell
-cat /etc/passwd
-grep root /etc/passwd
+View the user database (format: `username:x:UID:GID:comment:home:shell`):
 
-# Group database: groupname:x:GID:members
+```bash
+cat /etc/passwd
+```
+
+Filter to a specific user:
+
+```bash
+grep root /etc/passwd
+```
+
+View the group database:
+
+```bash
 cat /etc/group | head -20
 ```
 
+---
+
 ## Create a user
 
+Create `student1` with a home directory and bash shell:
+
 ```bash
-# -m creates the home directory
-# -s sets the login shell
 useradd -m -s /bin/bash student1
+```
 
-# Confirm creation
+Confirm the user entry was added:
+
+```bash
 grep student1 /etc/passwd
-ls /home/student1
+```
 
-# Set a password
+Confirm the home directory was created:
+
+```bash
+ls /home/student1
+```
+
+Set a password:
+
+```bash
 passwd student1
 ```
 
+---
+
 ## Modify a user
 
+Change the default shell:
+
 ```bash
-# Change the default shell
 usermod -s /bin/sh student1
+```
 
-# Add to a supplementary group (-a = append, -G = groups)
+Add to a supplementary group (`-a` = append, `-G` = groups):
+
+```bash
 usermod -aG sudo student1
+```
 
-# Verify
+Verify the change:
+
+```bash
 id student1
+```
+
+```bash
 groups student1
 ```
 
+---
+
 ## Create and manage groups
 
+Create a new group:
+
 ```bash
-# Create a new group
 groupadd labusers
+```
 
-# Add a user to the group
+Add `student1` to the group:
+
+```bash
 usermod -aG labusers student1
+```
 
-# Confirm
+Confirm the group entry:
+
+```bash
 grep labusers /etc/group
+```
+
+Confirm the user's membership:
+
+```bash
 id student1
 ```
 
+---
+
 ## Switch user: `su`
 
+Switch to `student1`:
+
 ```bash
-# Switch to student1 (prompts for password)
 su - student1
-whoami
-exit            # return to root
 ```
+
+Confirm you are now that user:
+
+```bash
+whoami
+```
+
+Return to root:
+
+```bash
+exit
+```
+
+---
 
 ## Delete a user
 
+Remove the user but keep the home directory:
+
 ```bash
-# Remove user, keep home directory
 userdel student1
+```
 
-# Remove user AND home directory
+Remove the user AND the home directory:
+
+```bash
 userdel -r student1
+```
 
-# Confirm removal
+Confirm the user is gone:
+
+```bash
 grep student1 /etc/passwd
 ```
 
@@ -92,17 +178,30 @@ grep student1 /etc/passwd
 
 ## Task ✅
 
+Create user `jntustudent` with a home directory and bash shell:
+
 ```bash
-# Create user jntustudent with home directory and bash shell
 useradd -m -s /bin/bash jntustudent
+```
 
-# Create group jntulab
+Create group `jntulab`:
+
+```bash
 groupadd jntulab
+```
 
-# Add jntustudent to jntulab
+Add `jntustudent` to `jntulab`:
+
+```bash
 usermod -aG jntulab jntustudent
+```
 
-# Record the user's identity information
+Record the user's identity information:
+
+```bash
 id jntustudent > ~/lab/jntu/user_info.txt
+```
+
+```bash
 cat ~/lab/jntu/user_info.txt
 ```
