@@ -1,0 +1,63 @@
+{
+  "title": "Linux Fundamentals — JNTU R25",
+  "description": "Hands-on Linux lab aligned to JNTU R25 regulations. Covers file system navigation, permissions, text processing, process management, cron scheduling, user administration, and shell scripting through 9 guided exercises.",
+  "difficulty": "Beginner",
+  "time": "75",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Step 1 — The Linux File System",
+        "text": "step1/text.md"
+      },
+      {
+        "title": "Step 2 — Files & Directories",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Step 3 — Viewing File Content",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Step 4 — Permissions & Ownership",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Step 5 — I/O Redirection & Pipes",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Step 6 — Text Processing Tools",
+        "text": "step6/text.md",
+        "verify": "step6/verify.sh"
+      },
+      {
+        "title": "Step 7 — Process Management & Cron",
+        "text": "step7/text.md",
+        "verify": "step7/verify.sh"
+      },
+      {
+        "title": "Step 8 — User & Group Management",
+        "text": "step8/text.md",
+        "verify": "step8/verify.sh"
+      },
+      {
+        "title": "Step 9 — Shell Scripting Basics",
+        "text": "step9/text.md",
+        "verify": "step9/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
