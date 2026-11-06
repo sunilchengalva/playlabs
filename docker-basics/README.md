@@ -44,25 +44,12 @@ git update-index --chmod=+x killercoda/docker-basics/background.sh
 git update-index --chmod=+x killercoda/docker-basics/step*/verify.sh
 ```
 
-### 2. Push to a public GitHub repository
+### 2. GitHub repository (already pushed)
 
-Killercoda pulls scenario files directly from a public GitHub repo. You have two options:
-
-**Option A — use the playlabs repo if it's public:**
+The scenario is live at:
 ```
-GitHub repo:  github.com/<your-org>/playlabs
-Scenario path inside repo:  killercoda/docker-basics
-```
-
-**Option B — create a dedicated public repo:**
-```bash
-# Create a new public repo called 'killercoda-scenarios' on GitHub, then:
-cd /path/to/playlabs
-cp -r killercoda/docker-basics /path/to/killercoda-scenarios/
-cd /path/to/killercoda-scenarios
-git init && git add . && git commit -m "add docker-basics scenario"
-git remote add origin git@github.com:<your-org>/killercoda-scenarios.git
-git push -u origin main
+GitHub repo:   github.com/sunilchengalva/playlabs  (public)
+Scenario path: docker-basics
 ```
 
 ### 3. Create the scenario in Killercoda
@@ -71,8 +58,8 @@ git push -u origin main
 2. Click **New Scenario**
 3. Fill in:
    - **Title:** Docker Basics — Containers from Zero to Hero
-   - **GitHub repository:** `<your-org>/playlabs` (or `killercoda-scenarios`)
-   - **Scenario directory path:** `killercoda/docker-basics` (or `docker-basics` if separate repo)
+   - **GitHub repository:** `sunilchengalva/playlabs`
+   - **Scenario directory path:** `docker-basics`
 4. Click **Save** — Killercoda will sync and validate the files
 5. Click **Preview** to run through the scenario yourself first
 
