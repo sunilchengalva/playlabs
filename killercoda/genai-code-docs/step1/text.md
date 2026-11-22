@@ -2,6 +2,12 @@
 
 Before running the demos, we need to give the lab environment your Anthropic API key.
 
+## Activate the Python environment
+
+```
+source /root/venv/bin/activate
+```
+
 ## Set your API key
 
 Replace `YOUR_KEY_HERE` with your actual Anthropic API key and run:

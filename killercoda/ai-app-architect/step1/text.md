@@ -2,6 +2,12 @@
 
 Before running the demo, we need to give the lab environment your Anthropic API key.
 
+## Activate the Python environment
+
+```
+source /root/venv/bin/activate
+```
+
 ## Set your API key
 
 Replace `YOUR_KEY_HERE` with your actual Anthropic API key and run:
@@ -11,8 +17,6 @@ export ANTHROPIC_API_KEY="YOUR_KEY_HERE"
 ```
 
 ## Verify the connection
-
-Run this quick check to confirm Python and the Anthropic SDK are ready:
 
 ```
 python3 -c "import anthropic; print('✓ Anthropic SDK ready')"
