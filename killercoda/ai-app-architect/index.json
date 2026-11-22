@@ -1,0 +1,32 @@
+{
+  "title": "AI App Architect — GenAI as a Software Engineering Collaborator",
+  "description": "Instructor-led demo for Engineering 5.0 FDP. Watch Claude design a complete mobile app architecture from a one-line product brief — and learn where human engineering judgment is still essential.",
+  "difficulty": "Beginner",
+  "time": "15",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Step 1 — Set Up the Claude API Connection",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Step 2 — Run the App Design Demo",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Step 3 — Explore a Variation",
+        "text": "step3/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

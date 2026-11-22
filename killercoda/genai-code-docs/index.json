@@ -1,0 +1,36 @@
+{
+  "title": "GenAI Code + Docs — AI as a Coding and Documentation Partner",
+  "description": "Instructor-led demo for Engineering 5.0 FDP. Watch Claude implement a CPU scheduler, explain every function in plain English, and generate technical documentation — all from a single prompt.",
+  "difficulty": "Beginner",
+  "time": "15",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Step 1 — Set Up the Claude API Connection",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Step 2 — Generate the Round Robin Implementation",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Step 3 — Generate Explanation + Documentation",
+        "text": "step3/text.md"
+      },
+      {
+        "title": "Step 4 — Run a Variation",
+        "text": "step4/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
