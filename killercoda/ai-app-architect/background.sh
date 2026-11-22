@@ -8,7 +8,7 @@ set -e
 apt-get update -qq
 apt-get install -y -qq python3 python3-pip python3-venv
 
-pip3 install --quiet --break-system-packages anthropic
+python3 -m pip install --quiet --break-system-packages anthropic
 
 # ── Demo script ──────────────────────────────────────────────────────────────
 mkdir -p /root/demo
