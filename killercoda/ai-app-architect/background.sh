@@ -2,15 +2,12 @@
 # Runs hidden during the intro slide.
 # Installs Python deps and stages the demo script.
 
-# ── Wait for apt lock (unattended-upgrades holds it on fresh Ubuntu) ─────────
-systemctl stop unattended-upgrades 2>/dev/null || true
-while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 1; done
-
-# ── Python + venv ─────────────────────────────────────────────────────────────
-apt-get update -qq || true
-apt-get install -y -qq python3 python3-pip python3-venv || true
-
-python3 -m venv /root/venv
+# ── Python venv + Anthropic SDK ───────────────────────────────────────────────
+# Try venv directly; only apt-install python3-venv if the first attempt fails
+if ! python3 -m venv /root/venv 2>/dev/null; then
+    timeout 60 apt-get install -y -qq python3-venv 2>/dev/null || true
+    python3 -m venv /root/venv
+fi
 /root/venv/bin/pip install --quiet anthropic
 echo "source /root/venv/bin/activate" >> /root/.bashrc
 
