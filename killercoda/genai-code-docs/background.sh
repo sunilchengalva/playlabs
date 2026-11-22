@@ -8,7 +8,9 @@ set -e
 apt-get update -qq
 apt-get install -y -qq python3 python3-pip python3-venv
 
-python3 -m pip install --quiet --break-system-packages anthropic
+python3 -m venv /root/venv
+/root/venv/bin/pip install --quiet anthropic
+echo "source /root/venv/bin/activate" >> /root/.bashrc
 
 # ── Demo script 1: generate implementation ───────────────────────────────────
 mkdir -p /root/demo
