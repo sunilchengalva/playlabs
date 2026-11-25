@@ -1,0 +1,37 @@
+{
+  "title": "AI as a Coding Partner — Live Demo for Educators",
+  "description": "Instructor-led demo for GenAI FDP (educator audience). Watch Claude write a CPU scheduler, document it in plain English, and produce a variation on demand. Each step is mapped back to what was taught in the session — foundation models, code generation patterns, and harness chaining.",
+  "difficulty": "Beginner",
+  "time": "15",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "background.sh"
+    },
+    "steps": [
+      {
+        "title": "Step 1 — Set Up the Claude API Connection",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Step 2 — Generate the Code",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Step 3 — Generate Explanation + Documentation",
+        "text": "step3/text.md"
+      },
+      {
+        "title": "Step 4 — Run a Variation",
+        "text": "step4/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
