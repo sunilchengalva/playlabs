@@ -10,13 +10,13 @@ if ! python3 -m venv /root/venv 2>/dev/null; then
     python3 -m venv /root/venv
 fi
 /root/venv/bin/pip install --quiet --upgrade pip
-/root/venv/bin/pip install --quiet sentence-transformers faiss-cpu anthropic numpy
+/root/venv/bin/pip install --quiet fastembed faiss-cpu anthropic numpy
 echo "source /root/venv/bin/activate" >> /root/.bashrc
 
-# ── Pre-download embedding model (~90 MB, cached to ~/.cache/huggingface) ─────
+# ── Pre-download embedding model (~90 MB ONNX, cached to ~/.cache/huggingface) ─
 /root/venv/bin/python3 -c "
-from sentence_transformers import SentenceTransformer
-SentenceTransformer('all-MiniLM-L6-v2')
+from fastembed import TextEmbedding
+TextEmbedding('sentence-transformers/all-MiniLM-L6-v2')
 "
 
 # ── Demo directory ────────────────────────────────────────────────────────────
@@ -86,9 +86,9 @@ def main():
         print(f"\n  Chunk {i + 1}: \"{c[:90]}...\"")
 
     print("\n[2/3] Embedding each chunk with all-MiniLM-L6-v2...")
-    from sentence_transformers import SentenceTransformer
-    model      = SentenceTransformer("all-MiniLM-L6-v2")
-    embeddings = model.encode(chunks, show_progress_bar=False)
+    from fastembed import TextEmbedding
+    model      = TextEmbedding("sentence-transformers/all-MiniLM-L6-v2")
+    embeddings = np.array(list(model.embed(chunks)))
 
     print(f"\n      Each chunk → a vector of {embeddings.shape[1]} numbers")
     print(f"\n      Sample — Chunk 1, first 8 values:")
@@ -141,15 +141,15 @@ def main():
     print(f"\nQuery: \"{query}\"")
 
     import faiss
-    from sentence_transformers import SentenceTransformer
+    from fastembed import TextEmbedding
 
     index = faiss.read_index(INDEX_PATH)
     with open(CHUNKS_PATH) as f:
         chunks = json.load(f)
 
     print("\n[1/2] Embedding the query...")
-    model = SentenceTransformer("all-MiniLM-L6-v2")
-    q_vec = model.encode([query]).astype(np.float32)
+    model = TextEmbedding("sentence-transformers/all-MiniLM-L6-v2")
+    q_vec = np.array(list(model.embed([query]))).astype(np.float32)
 
     print(f"[2/2] Searching {index.ntotal} chunk vectors for top {TOP_K} matches...")
     distances, indices = index.search(q_vec, k=TOP_K)
@@ -226,7 +226,7 @@ import json
 import numpy as np
 import anthropic
 import faiss
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 
 INDEX_PATH  = "/root/demo/gnits.index"
 CHUNKS_PATH = "/root/demo/gnits_chunks.json"
@@ -253,8 +253,8 @@ def main():
     with open(CHUNKS_PATH) as f:
         chunks = json.load(f)
 
-    model = SentenceTransformer("all-MiniLM-L6-v2")
-    q_vec = model.encode([query]).astype(np.float32)
+    model = TextEmbedding("sentence-transformers/all-MiniLM-L6-v2")
+    q_vec = np.array(list(model.embed([query]))).astype(np.float32)
     distances, indices = index.search(q_vec, k=TOP_K)
 
     retrieved = [chunks[i] for i in indices[0]]
