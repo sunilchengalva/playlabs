@@ -5,17 +5,19 @@
 export DEBIAN_FRONTEND=noninteractive
 
 # ── Python venv ───────────────────────────────────────────────────────────────
-python3 -m venv /root/venv
-source /root/venv/bin/activate
-
-pip install -q --upgrade pip
-pip install -q sentence-transformers faiss-cpu anthropic numpy
+if ! python3 -m venv /root/venv 2>/dev/null; then
+    timeout 60 apt-get install -y -qq python3-venv 2>/dev/null || true
+    python3 -m venv /root/venv
+fi
+/root/venv/bin/pip install --quiet --upgrade pip
+/root/venv/bin/pip install --quiet sentence-transformers faiss-cpu anthropic numpy
+echo "source /root/venv/bin/activate" >> /root/.bashrc
 
 # ── Pre-download embedding model (~90 MB, cached to ~/.cache/huggingface) ─────
-python3 - <<'PYEOF'
+/root/venv/bin/python3 -c "
 from sentence_transformers import SentenceTransformer
 SentenceTransformer('all-MiniLM-L6-v2')
-PYEOF
+"
 
 # ── Demo directory ────────────────────────────────────────────────────────────
 mkdir -p /root/demo
