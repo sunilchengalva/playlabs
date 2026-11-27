@@ -1,6 +1,6 @@
 {
   "title": "RAG Foundations — Build a Retrieval Augmented Generation System from Scratch",
-  "description": "Build a complete RAG pipeline in Python using sentence-transformers, FAISS, and Claude. No LangChain. No cloud vector DB. Every step is visible — from document chunking to grounded answers.",
+  "description": "Build a complete RAG pipeline in Python using fastembed, FAISS, and Claude. No LangChain. No cloud vector DB. Every step is visible — from document chunking to grounded answers.",
   "difficulty": "Intermediate",
   "time": "20",
   "details": {

@@ -3,7 +3,7 @@
 You've built a production-pattern RAG system from scratch in five steps.
 
 **What you built:**
-- Document chunking and semantic embedding (sentence-transformers, all-MiniLM-L6-v2)
+- Document chunking and semantic embedding (fastembed, all-MiniLM-L6-v2)
 - Vector storage and cosine-similarity search (FAISS, in-memory)
 - Retrieval-augmented generation with grounded, citable answers (Claude)
 

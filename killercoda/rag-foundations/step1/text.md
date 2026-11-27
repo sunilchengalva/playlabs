@@ -13,16 +13,17 @@ export ANTHROPIC_API_KEY=sk-ant-YOUR-KEY-HERE
 Verify all three packages installed correctly:
 
 ```bash
-python3 -c "import sentence_transformers, faiss, anthropic; print('All packages ready')"
+python3 -c "import fastembed, faiss, anthropic; print('All packages ready')"
 ```
 
 Confirm the embedding model is cached and ready:
 
 ```bash
 python3 -c "
-from sentence_transformers import SentenceTransformer
-m = SentenceTransformer('all-MiniLM-L6-v2')
-print(f'Model ready — output dimension: {m.get_sentence_embedding_dimension()}')
+from fastembed import TextEmbedding
+m = TextEmbedding('sentence-transformers/all-MiniLM-L6-v2')
+v = list(m.embed(['test']))
+print(f'Model ready — output dimension: {len(v[0])}')
 "
 ```
 

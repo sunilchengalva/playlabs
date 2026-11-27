@@ -11,7 +11,7 @@ A model trained on the entire internet still cannot answer questions about:
 **Retrieval Augmented Generation (RAG)** solves this by giving the model access to relevant document fragments at query time — without retraining.
 
 In this lab, you'll build a complete RAG system from scratch using three packages:
-- **sentence-transformers** — convert text into 384-dimensional semantic vectors
+- **fastembed** — convert text into 384-dimensional semantic vectors
 - **FAISS** — store and search those vectors (Facebook AI Similarity Search)
 - **Claude (Anthropic)** — generate answers grounded in retrieved content
 
