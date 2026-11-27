@@ -1,0 +1,25 @@
+{
+  "title": "RAG Foundations — Build a Retrieval Augmented Generation System from Scratch",
+  "description": "Build a complete RAG pipeline in Python using sentence-transformers, FAISS, and Claude. No LangChain. No cloud vector DB. Every step is visible — from document chunking to grounded answers.",
+  "difficulty": "Intermediate",
+  "time": "20",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "background.sh"
+    },
+    "steps": [
+      { "title": "Step 1 — API Setup & Dependencies",     "text": "step1/text.md", "verify": "step1/verify.sh" },
+      { "title": "Step 2 — Chunk & Embed the Document",   "text": "step2/text.md", "verify": "step2/verify.sh" },
+      { "title": "Step 3 — Retrieval Without the LLM",   "text": "step3/text.md", "verify": "step3/verify.sh" },
+      { "title": "Step 4 — Without RAG: The Problem",     "text": "step4/text.md" },
+      { "title": "Step 5 — Full RAG Pipeline",            "text": "step5/text.md" }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
